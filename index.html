@@ -1,109 +1,111 @@
 <html lang="en">
-    <head>
-        <title>Gallery</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-        <link href="css/main.css" rel="stylesheet" type="text/css">
-        <link href="css/animations.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head>
-    <body>
-        <div class="container" >
+<head>
+    <title>Gallery</title>
+    <meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+    <link href="css/main.css" rel="stylesheet" type="text/css">
+    <link href="css/animations.css" rel="stylesheet" type="text/css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
 
 
-            <div class="main-content">
-                <div class="input-date">
-                    <div>
-                        <input type="date" id="date" />
-                    </div>
-                </div>
-                <div class="welcome">
-                    <div class="message-welcome" id="welcome-message"  style="display: none">
-                        <p>HAPPY 29TH MONTHSARY BIBII!!! :)</p>
-
-                    </div>
-                    <div class="loader" id="loader-class" style="display: none"></div>
-                </div>
-                <div class="card-container" id="card-container" style="display: none;">
-                    <div class="card">
-                        <div class="card-modal image-display ">
-                            <img class="card-image" src="icons/closed-mail.png" alt="Closed Mail Icon" id="mail-closed">
-                            <img class="card-image" src="icons/open-mail.png" alt="Open Mail Icon" id="mail-open">
-                        </div>
-                        <div class="card-back" style="padding:10px;">
-                            <p style="text-align: center;text-transform: uppercase;">Happy 29th Monthsary </p>
-                            <span>Hello bibii, happy monthsary pala, tandaan mo Mahal na mahal parin kita at salamat palagi sa pag mamahal din sakin at sa pag tulong sakin para maging better person ako , sa ngayon di pa better pero papunta na siguro ako dun HAHAHAHA, so ayun nga pasensya na kung di ako consistent sa pag bigay ng flowers at gifts pero gagawa ako ng paraan para makapg bigay sayo ng kahit ano o maparamdam sayo na mahal na mahal kitaaa ;) Proud of you palagi bibii, laki narin ng pinagbago ng career mo bii , kaya proud na proud ako sayo, Sana kasama parin kita once na maka angat din ako , hintayin mo ko sasabayan kita dyan hehe , i love you always bibii :) Happy monthsary ulit :) </span>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-modal ">
-                            <p>FOR YOU BIBII</p>
-                        </div>
-                        <div class="card-back image-display">
-                            <img src="icons/sun-flower.png" alt="Sunflower" id="flowers">
-                        </div>
-                    </div>
-                </div>
+    <div class="main-content">
+        <div class="input-date">
+            <div>
+                <input id="date" type="date"/>
+            </div>
+        </div>
+        <div class="welcome">
+            <div class="message-welcome" id="welcome-message" style="display: none">
+                <p>HAPPY 29TH MONTHSARY BIBII!!! :)</p>
 
             </div>
-
+            <div class="loader" id="loader-class" style="display: none"></div>
         </div>
-    <script type="text/javascript">
-        const guest_date = document.getElementById("date");
-        const loader = document.getElementById("loader-class");
-        const cards = document.getElementById("card-container");
-        let welcomeMessage = document.getElementById("welcome-message");
-        function startTimer(){
-            let count = 0;
-            let timer = setInterval(() => {
-               ++count;
-               if(count === 10){
-                   localStorage.removeItem("hasAlreadyInputted");
-                   clearInterval(timer)
-               }
-            },1000)
-        }
-        if(localStorage.getItem('hasAlreadyInputted')){
-            guest_date.style = "display:none";
-            loader.style = "display:none";
-            welcomeMessage.style = "display:none";
-            cards.style = "display:flex";
-        }
+        <div class="card-container" id="card-container" style="display: none;">
+            <div class="card">
+                <div class="card-modal image-display ">
+                    <img alt="Closed Mail Icon" class="card-image" id="mail-closed" src="icons/closed-mail.png">
+                    <img alt="Open Mail Icon" class="card-image" id="mail-open" src="icons/open-mail.png">
+                </div>
+                <div class="card-back" style="padding:10px;">
+                    <p style="text-align: center;text-transform: uppercase;">Happy 29th Monthsary </p>
+                    <span>Hello bibii, happy monthsary pala, tandaan mo Mahal na mahal parin kita at salamat palagi sa pag mamahal din sakin at sa pag tulong sakin para maging better person ako , sa ngayon di pa better pero papunta na siguro ako dun HAHAHAHA, so ayun nga pasensya na kung di ako consistent sa pag bigay ng flowers at gifts pero gagawa ako ng paraan para makapg bigay sayo ng kahit ano o maparamdam sayo na mahal na mahal kitaaa ;) Proud of you palagi bibii, laki narin ng pinagbago ng career mo bii , kaya proud na proud ako sayo, Sana kasama parin kita once na maka angat din ako , hintayin mo ko sasabayan kita dyan hehe , i love you always bibii :) Happy monthsary ulit :) </span>
+                </div>
+            </div>
 
-        guest_date.addEventListener('change', function(e){
-            if(![null,undefined,' '].includes(e.target.value)){
-                let formatted_date = new Date(e.target.value);
-                const year = formatted_date.getFullYear();
-                const month = formatted_date.getMonth() + 1;
-                const day = formatted_date.getDate();
+            <div class="card">
+                <div class="card-modal ">
+                    <p>FOR YOU BIBII</p>
+                </div>
+                <div class="card-back image-display">
+                    <img alt="Sunflower" id="flowers" src="icons/sun-flower.png">
+                </div>
+            </div>
+        </div>
 
-                if(
-                    year == "2023" &&
-                    month == "7" &&
-                    day == "03"
-                ){
-                    if(!localStorage.getItem('hasAlreadyInputted')){
-                        localStorage.setItem("hasAlreadyInputted","1");
-                        startTimer();
-                    }
-                    this.style = "display:none";
+    </div>
 
+</div>
+<script type="text/javascript">
+    const guest_date = document.getElementById("date");
+    const loader = document.getElementById("loader-class");
+    const cards = document.getElementById("card-container");
+    let welcomeMessage = document.getElementById("welcome-message");
 
-                    welcomeMessage.style = "display:block";
-                    setTimeout(() => {
-                        loader.style = "display:block";
-                    },1500)
-                    setTimeout(() => {
-                        loader.style = "display:none";
-                        welcomeMessage.style = "display:none";
-                    },5000);
-                    setTimeout(() => {
-                        cards.style = "display:flex";
-                    },5500)
-                }
+    function startTimer() {
+        let count = 0;
+        let timer = setInterval(() => {
+            ++count;
+            if (count === 180) {
+                localStorage.removeItem("hasAlreadyInputted");
+                clearInterval(timer)
             }
+        }, 1000)
+    }
 
-        })
-    </script>
-    </body>
+    if (localStorage.getItem('hasAlreadyInputted')) {
+        guest_date.style = "display:none";
+        loader.style = "display:none";
+        welcomeMessage.style = "display:none";
+        cards.style = "display:flex";
+    }
+
+    guest_date.addEventListener('change', function (e) {
+        if (![null, undefined, ' '].includes(e.target.value)) {
+            let formatted_date = new Date(e.target.value);
+            const year = formatted_date.getFullYear();
+            const month = formatted_date.getMonth() + 1;
+            const day = formatted_date.getDate();
+
+            if (
+                year == "2023" &&
+                month == "7" &&
+                day == "03"
+            ) {
+                if (!localStorage.getItem('hasAlreadyInputted')) {
+                    localStorage.setItem("hasAlreadyInputted", "1");
+                    startTimer();
+                }
+                this.style = "display:none";
+
+
+                welcomeMessage.style = "display:block";
+                setTimeout(() => {
+                    loader.style = "display:block";
+                }, 1500)
+                setTimeout(() => {
+                    loader.style = "display:none";
+                    welcomeMessage.style = "display:none";
+                }, 5000);
+                setTimeout(() => {
+                    cards.style = "display:flex";
+                }, 5500)
+            }
+        }
+
+    })
+</script>
+</body>
 </html>
