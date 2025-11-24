@@ -66,3 +66,37 @@ body{
 span{
     line-height: .2in;
 }
+.input-date{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+#date{
+    width:200px;
+}
+.welcome{
+    color: navajowhite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.message-welcome > p{
+    font-size: 1px;
+    animation-name: welcome;
+    animation-duration: 4s;
+}
+.loader {
+    border: 5px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 5px solid #3498db;
+    width: 40px;
+    height: 40px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+}
+
+
+

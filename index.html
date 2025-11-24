@@ -7,21 +7,23 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
-        <div class="container">
-            <div class="header">
-                <div class="navigation-list">
-                    <div class="navigation-logo"></div>
-                    <div class="navigation-menu">
-<!--                        <ul>-->
-<!--                            <li>Gallery</li>-->
-<!--                            <li>Albums</li>-->
-<!--                        </ul>-->
-                    </div>
+        <div class="container" >
 
-                </div>
-            </div>
+
             <div class="main-content">
-                <div class="card-container">
+                <div class="input-date">
+                    <div>
+                        <input type="date" id="date" />
+                    </div>
+                </div>
+                <div class="welcome">
+                    <div class="message-welcome" id="welcome-message"  style="display: none">
+                        <p>HAPPY 29TH MONTHSARY BIBII!!! :)</p>
+
+                    </div>
+                    <div class="loader" id="loader-class" style="display: none"></div>
+                </div>
+                <div class="card-container" id="card-container" style="display: none;">
                     <div class="card">
                         <div class="card-modal image-display ">
                             <img class="card-image" src="icons/closed-mail.png" alt="Closed Mail Icon" id="mail-closed">
@@ -46,5 +48,62 @@
             </div>
 
         </div>
+    <script type="text/javascript">
+        const guest_date = document.getElementById("date");
+        const loader = document.getElementById("loader-class");
+        const cards = document.getElementById("card-container");
+        let welcomeMessage = document.getElementById("welcome-message");
+        function startTimer(){
+            let count = 0;
+            let timer = setInterval(() => {
+               ++count;
+               if(count === 10){
+                   localStorage.removeItem("hasAlreadyInputted");
+                   clearInterval(timer)
+               }
+            },1000)
+        }
+        if(localStorage.getItem('hasAlreadyInputted')){
+            guest_date.style = "display:none";
+            loader.style = "display:none";
+            welcomeMessage.style = "display:none";
+            cards.style = "display:flex";
+        }
+
+        guest_date.addEventListener('change', function(e){
+            if(![null,undefined,' '].includes(e.target.value)){
+                let formatted_date = new Date(e.target.value);
+                const year = formatted_date.getFullYear();
+                const month = formatted_date.getMonth() + 1;
+                const day = formatted_date.getDate();
+
+                if(
+                    year == "2023" &&
+                    month == "7" &&
+                    day == "03"
+                ){
+                    if(!localStorage.getItem('hasAlreadyInputted')){
+                        localStorage.setItem("hasAlreadyInputted","1");
+                        startTimer();
+                    }
+                    this.style = "display:none";
+
+
+                    welcomeMessage.style = "display:block";
+                    setTimeout(() => {
+                        loader.style = "display:block";
+                    },1500)
+                    setTimeout(() => {
+                        loader.style = "display:none";
+                        welcomeMessage.style = "display:none";
+                    },5000);
+                    setTimeout(() => {
+                        cards.style = "display:flex";
+                    },5500)
+                }
+            }
+
+        })
+    </script>
     </body>
 </html>
